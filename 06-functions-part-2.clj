@@ -125,3 +125,14 @@
 (update-in jdoe [:address :zip] inc)
 ;; => {:address {:number 24, :street "Main Street", :zip 27706}, :name "John Doe"}
 
+
+;; SETS
+(def colors #{"red" "green" "blue"})
+(def moods  #{"happy" "blue"})
+
+(disj colors "red")     ;; => #{"blue" "green"}
+
+(clojure.set/difference   colors moods)   ;; => #{"green" "red"}
+(clojure.set/intersection colors moods)   ;; => #{"blue"}
+(clojure.set/union        colors moods)   ;; => #{"blue" "green" "red" "happy"}
+
