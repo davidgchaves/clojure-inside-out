@@ -86,3 +86,27 @@
 (contains? v :rabbit) ;; => false (GOTCHA)
 (contains? v [1 2 3]) ;; => false (GOTCHA)
 
+
+;; MAPS
+(def m {:a 1 :b 2 :c 7})
+
+;; maps are actually functions of themselves, so
+(m :a)    ;; => 1
+(m :b)    ;; => 2
+(m :c)    ;; => 7
+
+;; ...but a keyword could become a function on a map, so
+(:a m)    ;; => 1
+(:b m)    ;; => 2
+(:c m)    ;; => 7
+
+(keys m)              ;; => (:c :b :a)
+(assoc m :d 9 :c 42)  ;; => {:c 42, :b 2, :d 9, :a 1}
+(dissoc m :d)         ;; => {:c 7, :b 2, :a 1}
+
+(merge-with + m {:a 2 :b 3}) ;; => {:c 7, :b 5, :a 3}
+;; a was 1, but 1+2 is 3, so a now is 3
+;; b was 2, but 2+3 is 5, so b now is 5
+
+(merge-with + m {:d 5})     ;; => {:c 7, :b 2, :d 5, :a 1}
+
