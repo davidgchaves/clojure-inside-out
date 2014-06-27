@@ -45,3 +45,10 @@
 
 (zipm05 [:a :b :c] [1 2 3])
 
+
+;; 06 - cheating
+(defn zipm06 [keys values]
+  (zipmap keys values))
+
+(zipm06 [:a :b :c] [1 2 3])
+
