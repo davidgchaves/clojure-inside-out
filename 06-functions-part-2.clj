@@ -31,3 +31,10 @@
 
 (zipm03 [:a :b :c] [1 2 3])
 
+
+;; 04 - using DATA CONSTRUCTOR function
+(defn zipm04 [keys values]
+  (apply hash-map (interleave keys values)))
+
+(zipm04 [:a :b :c] [1 2 3])
+
