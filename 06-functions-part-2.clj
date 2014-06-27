@@ -52,3 +52,11 @@
 
 (zipm06 [:a :b :c] [1 2 3])
 
+
+;; SEQUENCE COMPREHENSIONS - FOR MACRO (You can live without it, it's a personal preference)
+(for [x (range 2) y (range 3)] [x y]) ;; => ([0 0] [0 1] [0 2] [1 0] [1 1] [1 2])
+
+(take 10 (for [x (range 1000000) y (range 1000000) :while (< y x)]
+           [x y]))
+;; => ([1 0] [2 0] [2 1] [3 0] [3 1] [3 2] [4 0] [4 1] [4 2] [4 3])
+
