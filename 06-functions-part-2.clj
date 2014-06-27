@@ -60,3 +60,29 @@
            [x y]))
 ;; => ([1 0] [2 0] [2 1] [3 0] [3 1] [3 2] [4 0] [4 1] [4 2] [4 3])
 
+
+;; VECTORS
+(def v [42 :rabbit [1 2 3]])
+
+;; vectors are actually functions of themselves, so
+(v 0)     ;; => 42
+(v 1)     ;; => :rabbit
+(v 2)     ;; => [1 2 3]
+
+(peek v)  ;; => [1 2 3]
+(pop v)   ;; => [42 :rabbit]
+
+;; subvector starting in element 1 (= :rabbit)
+(subvec v 1)  ;; => [:rabbit [1 2 3]]
+
+;; GOTCHA: contains? is a function of an associative collection asking "is the key present?"
+;;         vectors are associative collections
+(contains? v 0)       ;; => true
+(contains? v 1)       ;; => true
+(contains? v 2)       ;; => true
+(contains? v 3)       ;; => false
+
+(contains? v 42)      ;; => false (GOTCHA)
+(contains? v :rabbit) ;; => false (GOTCHA)
+(contains? v [1 2 3]) ;; => false (GOTCHA)
+
