@@ -110,3 +110,18 @@
 
 (merge-with + m {:d 5})     ;; => {:c 7, :b 2, :d 5, :a 1}
 
+
+;; NESTED STRUCTURES
+(def jdoe {:name "John Doe"
+           :address {:zip 27705 :street "Main Street" :number 24}})
+
+(get-in jdoe [:address :zip])     ;; => 27705
+(get-in jdoe [:address :number])  ;; => 24
+(get-in jdoe [:name])             ;; => "John Doe"
+
+(assoc-in jdoe [:address :zip] 27514)
+;; => {:address {:number 24, :street "Main Street", :zip 27514}, :name "John Doe"}
+
+(update-in jdoe [:address :zip] inc)
+;; => {:address {:number 24, :street "Main Street", :zip 27706}, :name "John Doe"}
+
