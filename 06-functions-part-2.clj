@@ -23,3 +23,11 @@
 
 ;; :as directive --> Bind the entire vector to a local
 
+
+;; 03 - using REDUCE and MAP
+(defn zipm03 [keys values]
+  (reduce (fn [m [k v]] (assoc m k v))
+          {} (map vector keys values)))
+
+(zipm03 [:a :b :c] [1 2 3])
+
