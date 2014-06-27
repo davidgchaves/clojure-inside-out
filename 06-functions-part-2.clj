@@ -11,3 +11,15 @@
 ;;  - loop, or
 ;;  - function frame
 
+
+;; 02 - using LOOP and RECUR with DESTRUCTURING
+(defn zipm02 [keys values]
+  (loop [m {} [k & ks :as keys] (seq keys) [v & vs :as vals] (seq values)]
+    (if (and keys vals)
+      (recur (assoc m k v) ks vs)
+      m)))
+
+(zipm02 [:a :b :c] [1 2 3])
+
+;; :as directive --> Bind the entire vector to a local
+
