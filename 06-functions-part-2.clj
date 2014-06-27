@@ -38,3 +38,10 @@
 
 (zipm04 [:a :b :c] [1 2 3])
 
+
+;; 05 - using INTO
+(defn zipm05 [keys values]
+  (into {} (map vector keys values)))
+
+(zipm05 [:a :b :c] [1 2 3])
+
